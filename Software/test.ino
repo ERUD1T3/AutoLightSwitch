@@ -1,12 +1,11 @@
 //Prototype sketch of the smart switch
-//Arduino Examples/Sweep
 #include <Servo.h>
 
-void light(bool lstatus = LOW); //receives a light status and flick the light
-
+void flick(bool lstatus = LOW); //receives a light status and flick the light
+const uint8_t sensor = A5; //sensor connected to pin A5
 
 Servo sswitch; //object for the smart switch servo
-uint8_t servo_pin = 12; //digital pin 2 on arduino nano for servo
+const uint8_t servo_pin = 3; //digital pin 2 on arduino nano for servo
 
 void setup() {
   // put your setup code here, to run once:
@@ -14,13 +13,18 @@ void setup() {
   Serial.begin(9600);
 }
 
+float dB = 0;
+
 void loop() {
   // put your main code here, to run repeatedly:
-  light();
+ dB = analogRead(sensor);
+  delay(500);
+  Serial.println(dB, DEC);
+  //flick();
 }
 
 
-void light(bool lstatus) {
+void flick(bool lstatus) {
   uint8_t pos = 0;
   for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
     // in steps of 1 degree
