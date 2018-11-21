@@ -9,5 +9,5 @@ Repo for the development of an automatic light switcher for FIT dorms
   python setup.py develop --uninstall
 
 # Sound processings
-
+  $arecord for microphone recording
 # Activation of the Servo
