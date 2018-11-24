@@ -12,14 +12,14 @@ tf_cmd = 'python3 label_wav.py --graph=model_graph.pb --labels=conv_labels.txt -
 #to_continue = 'y'
 
 while True:
-    to_continue = input('try again? ')
+    to_continue = input('\ntry again? ')
     if to_continue == 'n':
         break
     os.system(record_cmd)
     os.system(play_cmd)
     os.system(tf_cmd)
 
-print('done!')
+print('\ndone!\n')
 
 
 

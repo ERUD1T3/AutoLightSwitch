@@ -80,8 +80,12 @@ def run_graph(wav_data, labels, input_layer_name, output_layer_name,
       score = predictions[node_id]
       
       print('%s (score = %.5f)' % (human_string, score))
-      if(human_string != None):
-        sock.send('1');
+      if(human_string == 'on'):
+        sock.send('1')
+        break
+      if(human_string == 'off'):
+        sock.send('0')
+        break
     return 0
 
 
