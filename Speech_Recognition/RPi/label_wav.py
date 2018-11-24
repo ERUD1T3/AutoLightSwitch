@@ -33,7 +33,7 @@ from __future__ import print_function
 
 import argparse
 import sys
-
+import bluetooth
 import tensorflow as tf
 
 # pylint: disable=unused-import
@@ -41,6 +41,12 @@ from tensorflow.contrib.framework.python.ops import audio_ops as contrib_audio
 # pylint: enable=unused-import
 
 FLAGS = None
+
+bd_addr = "00:14:03:06:43:65" #the address from the Arduino sensor
+port = 1 #port one for bluetooth address
+sock = bluetooth.BluetoothSocket (bluetooth.RFCOMM)
+sock.connect((bd_addr,port))
+print("connected")
 
 
 def load_graph(filename):
@@ -72,15 +78,17 @@ def run_graph(wav_data, labels, input_layer_name, output_layer_name,
     for node_id in top_k:
       human_string = labels[node_id]
       score = predictions[node_id]
+      
       print('%s (score = %.5f)' % (human_string, score))
-
+      if(human_string != None):
+        sock.send('1');
     return 0
 
 
 def label_wav(wav, labels, graph, input_name, output_name, how_many_labels):
   """Loads the model and labels, and runs the inference to print predictions."""
   if not wav or not tf.gfile.Exists(wav):
-    tf.logging.fatal('Audio file does not exist %s', wav)
+    tf.logging.fatal('Audio file does not exist %s', wav) 
 
   if not labels or not tf.gfile.Exists(labels):
     tf.logging.fatal('Labels file does not exist %s', labels)
@@ -131,3 +139,5 @@ if __name__ == '__main__':
 
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+
+sock.close()
