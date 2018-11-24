@@ -20,7 +20,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(LED_PIN, OUTPUT);
   flick.attach(9);
-  flick.write(HOME_POS);
+  //flick.write(HOME_POS);
   }
 
 void loop() {
