@@ -24,7 +24,7 @@ play(song);                                             % play the song
 stop(song);                                             % stop playing the song 
 
 %%
-filt = bpf_human_voice();                                         % open the filter that is saved in your work space (lab9) 
+filt = iir_voice();                                         % open the filter that is saved in your work space (lab9) 
                  
 %%
 output = filter(filt, input);                           % attenuate your input by applying the filter filt. 
