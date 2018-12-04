@@ -1,5 +1,5 @@
 %% Fast Fourrier Transform for Piano Bird
-[input, Fs] = audioread('test.wav');              % read the audio file
+[input, Fs] = audioread('test1.wav');              % read the audio file
 
 nffta = 2^nextpow2(length(input));                      % length of signal in power of 2 
 myffta = fft(input, nffta); 
@@ -31,7 +31,7 @@ output = filter(filt, input);                           % attenuate your input b
 
 %%
 filtered = audioplayer(output,Fs);                 % create a player object 
-filename = 'filtered_test.wav';
+filename = 'filtered_test1.wav';
 audiowrite(filename, output, Fs);
 
 %%
