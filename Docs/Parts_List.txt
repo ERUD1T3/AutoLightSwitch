@@ -1,0 +1,8 @@
+#List of part involved
+
+9V battery
+Elegoo Arduino Uno
+Elegoo Power Suppy Module
+High Sensitivity Sound Microphone sensor Module
+MG 90S Micro Servo Motor
+2.5 in. plastic bar for the flick
