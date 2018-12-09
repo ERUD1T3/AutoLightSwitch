@@ -1,8 +1,0 @@
-python freeze.py\
---start_checkpoint=/tmp/speech_commands_train/conv.ckpt-18000\
---output_file=/home/erud1t3/Desktop/Deep_Learning/Speech_Recognition/my_frozen_graph.pb
-
-python label_wav.py \
---graph=/home/erud1t3/Desktop/Deep_Learning/Speech_Recognition/my_frozen_graph.pb \
---labels=/tmp/speech_commands_train/conv_labels.txt \
---wav=/tmp/speech_dataset/left/a5d485dc_nohash_0.wav
